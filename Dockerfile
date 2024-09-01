@@ -5,9 +5,9 @@ FROM node:18
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+COPY package.json package-lock.json ./
 
-# Install dependencies
+# Install dependencies before copying the rest of the app
 RUN npm install
 
 # Copy the rest of the application code to the working directory
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 7001
 
 # Start the application
-CMD ["npm", "run", "start"]
+CMD ["npm", "start"]
