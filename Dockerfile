@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies
-RUN npm install
+RUN npm install --dev
 
 # Expose the port that the app runs on
 EXPOSE 7001
