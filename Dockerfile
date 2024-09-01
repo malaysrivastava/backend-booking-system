@@ -1,19 +1,20 @@
+# Use official Node.js 18 image as base
 FROM node:18
 
-WORKDIR /src/server
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-# RUN npm cache clean --force
-COPY package*.json ./
-RUN npm install
-# RUN npm install --check-files
-# If you are building your code for production
-# RUN npm ci --only=production
+# Set the working directory inside the container
+WORKDIR /app
 
-# Bundle app source
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code to the working directory
 COPY . .
 
-CMD [ "npm", "run", "start" ]
+# Expose the port that the app runs on
+EXPOSE 7001
 
-EXPOSE 7001/tcp
+# Start the application
+CMD ["npm", "run", "start"]
