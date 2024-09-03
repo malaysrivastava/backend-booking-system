@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
     files.forEach(file => {
         console.log(file);
     });
-    const serverPath = path.resolve(__dirname, '../../dist/server.js');
+    const serverPath = path.resolve(__dirname, '/server.js');
 
     // Spawn the node process to run the server.js in the background
     const child = spawn('node', [serverPath], {
